@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Birthday 💙</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
+
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #001a33, #003f66, #00111f);
+}
+
+/* bubbles */
+.bubble {
+    position: absolute;
+    bottom: -50px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    animation: rise 8s infinite ease-in;
+}
+
+@keyframes rise {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* fish */
+.fish {
+    position: absolute;
+    font-size: 28px;
+    animation: swim 12s linear infinite;
+}
+
+@keyframes swim {
+    from { transform: translateX(-10vw); }
+    to { transform: translateX(110vw); }
+}
+
+/* hearts */
+.heart {
+    position: absolute;
+    color: #66ccff;
+    font-size: 18px;
+    animation: floatUp 5s linear forwards;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.5); opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+}
+
+/* card */
+.card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    padding: 35px;
+    width: 340px;
+    border-radius: 25px;
+    background: rgba(0, 60, 120, 0.25);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 40px rgba(0,180,255,0.4);
+    color: white;
+}
+
+/* title */
+h1 {
+    font-size: 20px;
+    color: #66ccff;
+    text-shadow: 0 0 12px #00c3ff;
+}
+
+p {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* gift */
+.gift {
+    font-size: 65px;
+    cursor: pointer;
+    animation: bounce 1.5s infinite;
+    filter: drop-shadow(0 0 10px #66ccff);
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* button */
+button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(45deg, #00c3ff, #0066ff);
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="gift" onclick="spawnHearts()">🎁</div>
+
+    <h1>HAPPY BIRTHDAY VANIA 💙</h1>
+
+    <p>
+        I HAVE YOU BE NICE OK! 🌊<br>
+        19 Y.o ✨<br><br>
+        - bye: mio carletta
+    </p>
+
+    <button onclick="spawnHearts()">Send Love 💌</button>
+</div>
+
+<script>
+
+// bubbles
+for(let i=0;i<25;i++){
+    let b = document.createElement("div");
+    b.classList.add("bubble");
+    let size = Math.random()*20 + 10;
+    b.style.width = size + "px";
+    b.style.height = size + "px";
+    b.style.left = Math.random()*100 + "vw";
+    b.style.animationDuration = (Math.random()*5+5)+"s";
+    document.body.appendChild(b);
+}
+
+// fish swimming
+const fishEmojis = ["🐟","🐠","🐡"];
+for(let i=0;i<6;i++){
+    let f = document.createElement("div");
+    f.classList.add("fish");
+    f.innerHTML = fishEmojis[Math.floor(Math.random()*fishEmojis.length)];
+    f.style.top = Math.random()*80 + "vh";
+    f.style.animationDuration = (Math.random()*10+8)+"s";
+    f.style.fontSize = (Math.random()*20+20)+"px";
+    document.body.appendChild(f);
+}
+
+// hearts
+function spawnHearts(){
+    for(let i=0;i<20;i++){
+        let h = document.createElement("div");
+        h.classList.add("heart");
+        h.innerHTML = "💙";
+
+        h.style.left = Math.random()*100 + "vw";
+        h.style.top = "80vh";
+        h.style.fontSize = (Math.random()*18+10)+"px";
+
+        document.body.appendChild(h);
+
+        setTimeout(()=> h.remove(), 5000);
+    }
+}
+
+</script>
+
+</body>
+</html>
